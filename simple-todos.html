@@ -1,0 +1,37 @@
+<head>
+    <title>Todo List</title>
+</head>
+
+<body>
+{{> loginButtons}}
+{{#if currentUser}}
+<div class="container">
+    <header>
+
+        <h1>Todo List</h1>
+
+        <!-- add a form below the h1 -->
+        <form class="new-task">
+            <input type="text" name="text" placeholder="Type to add new tasks"/>
+        </form>
+    </header>
+    <h1>Todo List ({{incompleteCount}})</h1>
+    <ul>
+        {{#each tasks}}
+        {{> task}}
+        {{/each}}
+    </ul>
+</div>
+{{/if}}
+
+<button id="interv">TestInterval</button>
+<button id="intervStop">StopInterval</button>
+</body>
+
+<template name="task">
+    <li class="{{#if checked}}checked{{/if}}">
+        <span class="text">{{text}}</span>
+        <input type="checkbox" checked="{{checked}}" class="toggle-checked"/>
+        <button class="delete">Delete</button>
+    </li>
+</template>
